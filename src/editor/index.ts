@@ -1,6 +1,6 @@
 /**
  * @description 编辑器 class
- * @author wangfupeng
+ * @author way
  */
 
 import $, { DomElement, DomElementSelector } from '../utils/dom-core'
@@ -37,7 +37,6 @@ let EDITOR_ID = 1
 class Editor {
     // 暴露 $
     static $ = $
-
     static BtnMenu = BtnMenu
     static DropList = DropList
     static DropListMenu = DropListMenu
@@ -87,7 +86,7 @@ class Editor {
      */
     constructor(toolbarSelector: DomElementSelector, textSelector?: DomElementSelector) {
         // id，用以区分单个页面不同的编辑器对象
-        this.id = `wangEditor-${EDITOR_ID++}`
+        this.id = `tinyEditor-${EDITOR_ID++}`
 
         this.toolbarSelector = toolbarSelector
         this.textSelector = textSelector

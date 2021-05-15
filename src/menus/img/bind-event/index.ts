@@ -1,6 +1,6 @@
 /**
  * @description 绑定图片的事件
- * @author wangfupeng
+ * @author way
  */
 
 import Editor from '../../../editor/index'

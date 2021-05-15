@@ -1,6 +1,6 @@
 /**
  * @description webpack 通用配置
- * @author wangfupeng
+ * @author way
  */
 
 const path = require('path')
@@ -9,7 +9,7 @@ const { srcPath } = require('./myPath')
 
 module.exports = {
     entry: {
-        wangEditor: path.join(srcPath, 'wangEditor.ts'),
+        tinyEditor: path.join(srcPath, 'tinyEditor.ts'),
     },
     module: {
         rules: [

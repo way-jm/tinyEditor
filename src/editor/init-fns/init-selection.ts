@@ -1,6 +1,6 @@
 /**
  * @description 初始化编辑器选区，将光标定位到文档末尾
- * @author wangfupeng
+ * @author way
  */
 
 import Editor from '../index'

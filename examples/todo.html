@@ -4,12 +4,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>wangEditor example</title>
+    <title>tinyEditor example</title>
 </head>
 
 <body>
     <p>
-        wangEditor demo
+        tinyEditor demo
     </p>
 
     <div id="div1">
@@ -24,10 +24,10 @@
         </ul>
     </div>
 
-    <script src="../dist/wangEditor.js"></script>
+    <script src="../dist/tinyEditor.js"></script>
     <script>
         // 改为使用var声明，才能在window对象上获取到编辑器实例，方便e2e测试
-        var E = window.wangEditor
+        var E = window.tinyEditor
         var editor = new E('#div1')
 
         editor.config.onchange = function (newHtml) {

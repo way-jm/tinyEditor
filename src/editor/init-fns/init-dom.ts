@@ -1,6 +1,6 @@
 /**
  * @description 初始化编辑器 DOM 结构
- * @author wangfupeng
+ * @author way
  */
 
 import Editor from '../index'
@@ -124,7 +124,7 @@ export default function (editor: Editor): void {
  */
 export function selectorValidator(editor: Editor) {
     const name = 'data-we-id'
-    const regexp = /^wangEditor-\d+$/
+    const regexp = /^tinyEditor-\d+$/
     const { textSelector, toolbarSelector } = editor
 
     const $el = {

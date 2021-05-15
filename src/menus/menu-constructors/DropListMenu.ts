@@ -1,6 +1,6 @@
 /**
  * @description 下拉菜单 Class
- * @author wangfupeng
+ * @author way
  */
 
 import $, { DomElement } from '../../utils/dom-core'

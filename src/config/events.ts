@@ -1,6 +1,6 @@
 /**
  * @description 事件配置
- * @author wangfupeng
+ * @author way
  */
 
 import { EMPTY_FN } from '../utils/const'
@@ -20,7 +20,7 @@ export type TCatalog = {
 function customAlert(alertInfo: string, alertType: string, debugInfo?: string): void {
     window.alert(alertInfo)
     if (debugInfo) {
-        console.error('wangEditor: ' + debugInfo)
+        console.error('tinyEditor: ' + debugInfo)
     }
 }
 

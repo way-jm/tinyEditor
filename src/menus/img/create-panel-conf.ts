@@ -1,6 +1,6 @@
 /**
  * @description image 菜单 panel tab 配置
- * @author wangfupeng
+ * @author way
  */
 
 import Editor from '../../editor/index'

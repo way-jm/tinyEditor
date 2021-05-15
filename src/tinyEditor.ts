@@ -1,6 +1,6 @@
 /**
  * @description 入口文件
- * @author wangfupeng
+ * @author way
  */
 
 import './assets/style/common.less'

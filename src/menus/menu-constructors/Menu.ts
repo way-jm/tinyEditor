@@ -1,6 +1,6 @@
 /**
  * @description Menu class 父类
- * @author wangfupeng
+ * @author way
  */
 
 import { DomElement } from '../../utils/dom-core'

@@ -1,6 +1,6 @@
 /**
  * @description 样式配置
- * @author wangfupeng
+ * @author way
  */
 
 export default {

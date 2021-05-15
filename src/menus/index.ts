@@ -1,6 +1,6 @@
 /**
  * @description Menus 菜单栏 入口文件
- * @author wangfupeng
+ * @author way
  */
 
 import Editor from '../editor/index'

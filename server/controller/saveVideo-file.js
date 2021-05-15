@@ -1,6 +1,6 @@
 /**
  * @description 保存上传的文件
- * @author wangfupeng
+ * @author way
  */
 
 const os = require('os')

@@ -276,7 +276,7 @@ class UploadVideo {
             config.customAlert(
                 t('插入视频错误'),
                 'error',
-                `wangEditor: ${t('插入视频错误')}，${t('视频链接')} "${url}"，${t('下载链接失败')}`
+                `tinyEditor: ${t('插入视频错误')}，${t('视频链接')} "${url}"，${t('下载链接失败')}`
             )
             video = null
         }

@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>wangEditor example</title>
+  <title>tinyEditor example</title>
   <style>
   </style>
 
@@ -14,12 +14,12 @@
 
 <body>
   <p>
-    wangEditor demo upload image
+    tinyEditor demo upload image
   </p>
 
   <div id="div1"></div>
 
-  <script src="../dist/wangEditor.js"></script>
+  <script src="../dist/tinyEditor.js"></script>
   <script>
 
     let client = new OSS({
@@ -31,7 +31,7 @@
       // bucket: 'Your bucket name',
     });
 
-    const E = window.wangEditor
+    const E = window.tinyEditor
     const editor = new E('#div1')
 
     editor.config.customUploadImg = function (resultFiles, insertImgFn) {

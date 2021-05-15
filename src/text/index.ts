@@ -1,6 +1,6 @@
 /**
  * @description 编辑区域，入口文件
- * @author wangfupeng
+ * @author way
  */
 
 import $, { DomElement } from '../utils/dom-core'

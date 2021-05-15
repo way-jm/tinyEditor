@@ -4,14 +4,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>wangEditor example</title>
+    <title>tinyEditor example</title>
     <style>
     </style>
 </head>
 
 <body>
     <p>
-        wangEditor getJSON
+        tinyEditor getJSON
     </p>
     <div id="div1">
         
@@ -22,9 +22,9 @@
     <button onclick="getJson()">getJSON</button>
     <button onclick="setTable()">setJSON Table</button>
 
-    <script src="../dist/wangEditor.js"></script>
+    <script src="../dist/tinyEditor.js"></script>
     <script>
-        const E = window.wangEditor
+        const E = window.tinyEditor
         const editor = new E('#div1')
         editor.config.onchange = function (newHtml) {
             console.log('onchange', newHtml)
@@ -54,7 +54,7 @@
                         {
                             "tag": "b",
                             "attrs": [],
-                            "children": [ "wangEditor" ]
+                            "children": [ "tinyEditor" ]
                         },
                         " 富文本编辑器"
                     ]

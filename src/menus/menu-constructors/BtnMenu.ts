@@ -1,6 +1,6 @@
 /**
  * @description 按钮菜单 Class
- * @author wangfupeng
+ * @author way
  */
 
 import { DomElement } from '../../utils/dom-core'

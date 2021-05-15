@@ -1,6 +1,6 @@
 /**
  * @description tooltip 事件
- * @author wangfupeng
+ * @author way
  */
 
 import $, { DomElement } from '../../../utils/dom-core'

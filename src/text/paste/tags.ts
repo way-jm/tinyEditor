@@ -1,6 +1,6 @@
 /**
  * @description 粘贴相关的 tags
- * @author wangfupeng
+ * @author way
  */
 
 // 忽略的标签

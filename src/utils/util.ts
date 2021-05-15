@@ -1,6 +1,6 @@
 /**
  * @description 工具函数集合
- * @author wangfupeng
+ * @author way
  */
 
 class NavUA {

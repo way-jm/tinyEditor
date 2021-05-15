@@ -1,6 +1,6 @@
 /**
  * @description 上传进度条
- * @author wangfupeng
+ * @author way
  */
 
 import $, { DomElement } from '../../utils/dom-core'

@@ -1,6 +1,6 @@
 /**
  * @description 绑定编辑器事件 change blur focus
- * @author wangfupeng
+ * @author way
  */
 
 import Editor from '../index'
@@ -26,7 +26,7 @@ function _bindChange(editor: Editor): void {
         const { onchange } = editor.config
         if (onchange) {
             const html = editor.txt.html() || ''
-            // onchange触发时，是focus状态，详见https://github.com/wangeditor-team/wangEditor/issues/3034
+            // onchange触发时，是focus状态，详见https://github.com/tinyEditor-team/tinyEditor/issues/3034
             editor.isFocus = true
             onchange(html)
         }

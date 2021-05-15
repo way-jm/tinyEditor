@@ -2,7 +2,7 @@ export default {
     lang: 'zh-CN',
     languages: {
         'zh-CN': {
-            wangEditor: {
+            tinyEditor: {
                 重置: '重置',
                 插入: '插入',
                 默认: '默认',
@@ -143,7 +143,7 @@ export default {
             },
         },
         en: {
-            wangEditor: {
+            tinyEditor: {
                 重置: 'reset',
                 插入: 'insert',
                 默认: 'default',

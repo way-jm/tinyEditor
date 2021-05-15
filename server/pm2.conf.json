@@ -1,7 +1,7 @@
 {
     "apps": [
         {
-            "name": "wangEditor-server",
+            "name": "tinyEditor-server",
             "script": "server/www.js",
             "watch": false,
             "instances": 1,

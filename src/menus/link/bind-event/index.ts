@@ -1,6 +1,6 @@
 /**
  * @description 绑定链接元素的事件，入口
- * @author wangfupeng
+ * @author way
  */
 
 import Editor from '../../../editor/index'

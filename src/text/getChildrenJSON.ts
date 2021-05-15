@@ -1,6 +1,6 @@
 /**
  * @description 获取子元素的 JSON 格式数据
- * @author wangfupeng
+ * @author way
  */
 
 import { replaceHtmlSymbol } from '../utils/util'

@@ -1,6 +1,6 @@
 /**
  * @description 所有菜单的构造函数
- * @author wangfupeng
+ * @author way
  */
 
 import Bold from './bold/index'

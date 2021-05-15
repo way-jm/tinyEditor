@@ -1,6 +1,6 @@
 /**
  * @description 图片相关的配置
- * @author wangfupeng
+ * @author way
  */
 
 import Editor from '../editor/index'

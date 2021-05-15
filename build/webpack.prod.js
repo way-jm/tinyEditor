@@ -1,6 +1,6 @@
 /**
  * @description webpack 配置，生产环境
- * @author wangfupeng
+ * @author way
  */
 
 // const path = require('path')
@@ -24,7 +24,7 @@ module.exports = smart(CommonConf, {
     output: {
         filename: '[name].min.js',
         path: distPath,
-        library: 'wangEditor',
+        library: 'tinyEditor',
         libraryTarget: 'umd',
         libraryExport: 'default',
     },

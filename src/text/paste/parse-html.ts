@@ -1,6 +1,6 @@
 /**
  * @description 将粘贴的 html 字符串，转换为正确、简洁的 html 代码。剔除不必要的标签和属性。
- * @author wangfupeng
+ * @author way
  */
 
 import { EMPTY_TAGS, IGNORE_TAGS, NECESSARY_ATTRS } from './tags'

@@ -1,6 +1,6 @@
 /**
  * @description 编辑器配置
- * @author wangfupeng
+ * @author way
  */
 
 import menusConfig, {

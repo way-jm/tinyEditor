@@ -1,6 +1,6 @@
 /**
  * @description Modal 菜单 Class
- * @author wangfupeng
+ * @author way
  */
 
 import { DomElement } from '../../utils/dom-core'

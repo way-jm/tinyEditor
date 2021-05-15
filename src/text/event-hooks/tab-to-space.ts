@@ -1,6 +1,6 @@
 /**
  * @description 编辑区域 tab 的特殊处理
- * @author wangfupeng
+ * @author way
  */
 
 import Editor from '../../editor/index'

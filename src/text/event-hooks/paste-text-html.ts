@@ -1,6 +1,6 @@
 /**
  * @description 粘贴 text html
- * @author wangfupeng
+ * @author way
  */
 
 import Editor from '../../editor/index'
@@ -162,7 +162,7 @@ function pasteTextHtml(editor: Editor, pasteEvents: Function[]) {
                     // editor.selection.moveCursor(lastEl.elems[0])
                 } else {
                     // 如果用户从百度等网站点击复制得到的图片是一串img标签且待src的http地址
-                    // 见 https://github.com/wangeditor-team/wangEditor/issues/3119
+                    // 见 https://github.com/tinyEditor-team/tinyEditor/issues/3119
                     // 如果是走用户定义的图片上传逻辑
                     const isHasOnlyImgEleReg = /^<img [^>]*src=['"]([^'"]+)[^>]*>$/g
                     if (!isHasOnlyImgEleReg.test(html)) {

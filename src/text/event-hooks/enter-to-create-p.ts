@@ -1,6 +1,6 @@
 /**
  * @description 回车时，保证生成的是 <p> 标签
- * @author wangfupeng
+ * @author way
  */
 
 import Editor from '../../editor/index'

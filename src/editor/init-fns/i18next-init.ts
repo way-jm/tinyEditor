@@ -14,9 +14,9 @@ function i18nextInit(editor: Editor) {
     if (editor.i18next != null) {
         try {
             editor.i18next.init({
-                ns: 'wangEditor',
+                ns: 'tinyEditor',
                 lng: lang,
-                defaultNS: 'wangEditor',
+                defaultNS: 'tinyEditor',
                 resources: languages,
             })
         } catch (error) {

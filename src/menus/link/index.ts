@@ -1,6 +1,6 @@
 /**
  * @description 链接 菜单
- * @author wangfupeng
+ * @author way
  */
 
 import PanelMenu from '../menu-constructors/PanelMenu'

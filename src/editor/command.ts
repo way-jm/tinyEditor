@@ -1,6 +1,6 @@
 /**
  * @description 封装 document.execCommand
- * @author wangfupeng
+ * @author way
  */
 
 import $, { DomElement } from '../utils/dom-core'

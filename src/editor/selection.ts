@@ -1,6 +1,6 @@
 /**
  * @description selection range API
- * @author wangfupeng
+ * @author way
  */
 import $, { DomElement } from '../utils/dom-core'
 import { UA } from '../utils/util'

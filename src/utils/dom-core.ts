@@ -1,6 +1,6 @@
 /**
  * @description 封装 DOM 操作
- * @wangfupeng
+ * @way
  */
 
 import Editor from '../editor/index'

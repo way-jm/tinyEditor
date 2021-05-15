@@ -1,6 +1,6 @@
 /**
  * @description typescript 声明文件
- * @author wangfupeng
+ * @author way
  */
 
 declare class SimpleHtmlParser {

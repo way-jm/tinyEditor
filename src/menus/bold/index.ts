@@ -1,6 +1,6 @@
 /**
  * @description 加粗
- * @author wangfupeng
+ * @author way
  */
 
 import BtnMenu from '../menu-constructors/BtnMenu'

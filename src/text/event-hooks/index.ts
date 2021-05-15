@@ -1,6 +1,6 @@
 /**
  * @description Text 事件钩子函数。Text 公共的，不是某个菜单独有的
- * @wangfupeng
+ * @way
  */
 
 import Text from '../index'

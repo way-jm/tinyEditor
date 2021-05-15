@@ -1,6 +1,6 @@
 /**
  * @description 上传的核心方法
- * @author wangfupeng
+ * @author way
  */
 
 import { forEach } from '../../utils/util'
@@ -31,7 +31,7 @@ function post<T extends Object>(url: string, option: PostOptionType<T>): XMLHttp
     // 超时，默认 10s
     xhr.timeout = option.timeout || 10 * 1000
     xhr.ontimeout = () => {
-        console.error('wangEditor - 请求超时')
+        console.error('tinyEditor - 请求超时')
         option.onTimeout && option.onTimeout(xhr)
     }
 
@@ -72,7 +72,7 @@ function post<T extends Object>(url: string, option: PostOptionType<T>): XMLHttp
         if (status >= 300 && status < 400) return // 重定向
         if (status >= 400) {
             // 40x 50x 报错
-            console.error('wangEditor - XHR 报错，状态码 ' + status)
+            console.error('tinyEditor - XHR 报错，状态码 ' + status)
             if (option.onError) option.onError(xhr) // 有，则执行 onError 函数即可
             return
         }
@@ -84,7 +84,7 @@ function post<T extends Object>(url: string, option: PostOptionType<T>): XMLHttp
             try {
                 result = JSON.parse(resultStr)
             } catch (ex) {
-                console.error('wangEditor - 返回结果不是 JSON 格式', resultStr)
+                console.error('tinyEditor - 返回结果不是 JSON 格式', resultStr)
                 if (option.onFail) option.onFail(xhr, resultStr)
                 return
             }

@@ -1,6 +1,6 @@
 /**
  * @description 上传图片
- * @author wangfupeng
+ * @author way
  */
 
 import Editor from '../../editor/index'
@@ -55,7 +55,7 @@ class UploadImg {
             config.customAlert(
                 t('插入图片错误'),
                 'error',
-                `wangEditor: ${t('插入图片错误')}，${t('图片链接')} "${src}"，${t('下载链接失败')}`
+                `tinyEditor: ${t('插入图片错误')}，${t('图片链接')} "${src}"，${t('下载链接失败')}`
             )
             img = null
         }

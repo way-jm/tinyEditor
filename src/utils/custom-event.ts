@@ -1,6 +1,6 @@
 /**
  * @description 自定义事件（暂时无用，有谁需要用时，一定要联系作者确认！！！）
- * @author wangfupeng
+ * @author way
  */
 
 export default class CustomEvent {

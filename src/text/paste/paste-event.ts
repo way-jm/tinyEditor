@@ -1,6 +1,6 @@
 /**
  * @description 处理粘贴逻辑
- * @author wangfupeng
+ * @author way
  */
 
 import { replaceHtmlSymbol, forEach } from '../../utils/util'

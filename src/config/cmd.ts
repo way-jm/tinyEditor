@@ -1,6 +1,6 @@
 /**
  * @description 命令配置项
- * @author wangfupeng
+ * @author way
  */
 
 export default {
