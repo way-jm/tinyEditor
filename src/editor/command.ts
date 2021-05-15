@@ -65,8 +65,8 @@ class Command {
         const editor = this.editor
         const range = editor.selection.getRange()
         if (range == null) return
-
-        if (this.queryCommandSupported('insertHTML')) {
+        const de = false
+        if (de) {
             // W3C
             this.execCommand('insertHTML', html)
         } else if (range.insertNode) {
@@ -81,10 +81,6 @@ class Command {
             }
             editor.selection.collapseRange()
         }
-        // else if (range.pasteHTML) {
-        //     // IE <= 10
-        //     range.pasteHTML(html)
-        // }
     }
 
     /**

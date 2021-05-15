@@ -4,7 +4,7 @@
  */
 
 import Editor from '../../editor/index'
-import { PanelConf } from '../menu-constructors/Panel'
+import { PanelConf } from '../menu-constructors'
 import { getRandom } from '../../utils/util'
 import $, { DomElement } from '../../utils/dom-core'
 import isActive from './is-active'
@@ -85,7 +85,7 @@ export default function (editor: Editor, text: string, link: string): PanelConf 
         return false
     }
 
-    const conf = {
+    return {
         width: 300,
         height: 0,
 
@@ -188,6 +188,4 @@ export default function (editor: Editor, text: string, link: string): PanelConf 
             }, // tab end
         ], // tabs end
     }
-
-    return conf
 }

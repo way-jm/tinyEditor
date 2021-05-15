@@ -18,9 +18,11 @@ class AltUser extends PanelMenu implements MenuActive {
      * 创建 panel
      */
     private createPanel(): void {
-        const conf = createPanelConf(this.editor)
-        const panel = new Panel(this, conf)
-        panel.create()
+        // console.log(this.editor.selection.getSelectionEndElem().elems[0].getClientRects())
+        this.editor.cmd.do('insertHTML', new Text('a') as unknown as string)
+        // const conf = createPanelConf(this.editor)
+        // const panel = new Panel(this, conf)
+        // panel.create()
     }
 
     /**

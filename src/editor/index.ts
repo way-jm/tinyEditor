@@ -32,7 +32,6 @@ class Editor {
     static PanelMenu = PanelMenu
     static Tooltip = Tooltip
     static globalCustomMenuConstructorList: MenuListType = {}
-
     public id: string
     public toolbarSelector: DomElementSelector
     public textSelector?: DomElementSelector

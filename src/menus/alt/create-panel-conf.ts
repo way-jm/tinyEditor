@@ -4,76 +4,109 @@
  */
 
 import Editor from '../../editor/index'
-import { PanelConf, PanelTabConf } from '../menu-constructors'
+import { PanelConf } from '../menu-constructors'
 import $ from '../../utils/dom-core'
-import { EmotionsContentType, EmotionsType } from '../../config/menus'
+
+import { getRandom } from '../../utils/util'
+import { altUserGroupType, altUserType } from '../../config/altUsaer'
 
 export default function (editor: Editor): PanelConf {
+    // 搜索框要用到的id
+    const inputTextId = getRandom('input-text')
     // 声明emotions数据结构
-    const emotions: Array<EmotionsType> = editor.config.emotions
+    const altUsers: Array<altUserGroupType> = editor.config.altUsers
 
     // 生成表情结构 TODO jele type类型待优化
-    function GenerateExpressionStructure(ele: EmotionsType) {
+    function GenerateAltUserStructure(users: Array<altUserGroupType>) {
         // 返回为一个数组对象
         let res: string[] = []
-
-        // 如果type是image类型则生成一个img标签
-        if (ele.type == 'image') {
-            res = ele.content.map((con: EmotionsContentType | string) => {
-                if (typeof con == 'string') return ''
-                return `<span  title="${con.alt}">
-                    <img class="eleImg" data-emoji="${con.alt}" style src="${con.src}" alt="[${con.alt}]">
-                </span>`
-            })
-            res = res.filter((s: string) => s !== '')
-        }
-        //否则直接当内容处理
-        else {
-            res = ele.content.map((con: EmotionsContentType | string) => {
-                return `<span class="eleImg" title="${con}">${con}</span>`
-            })
-        }
-
+        res = users.map((group: altUserGroupType) => {
+            return `<div class="t-user-group">
+                       <h5 class="t-e-alt-h">${group.tag}</h5>
+                       <ul>
+                         ${GenerateUserItem(group.list)}
+                       </ul>
+                    </div>`
+        })
         return res.join('').replace(/&nbsp;/g, '')
     }
-
-    const tabsConf: PanelTabConf[] = emotions.map((ele: EmotionsType) => {
-        return {
-            title: `表情`,
-
-            // 判断type类型如果是image则以img的形式插入否则以内容
-            tpl: `<div>${GenerateExpressionStructure(ele)}</div>`,
-
-            events: [
-                {
-                    selector: '.eleImg',
-                    type: 'click',
-                    fn: (e: Event) => {
-                        // e为事件对象
-                        const $target = $(e.target)
-                        const nodeName = $target.getNodeName()
-                        let insertHtml
-
-                        if (nodeName === 'IMG') {
-                            // 插入图片
-                            insertHtml = $target.parent().html().trim()
-                        } else {
-                            // 插入 emoji
-                            insertHtml = '<span>' + $target.html() + '</span>'
-                        }
-
-                        editor.cmd.do('insertHTML', insertHtml)
-                        // 示函数执行结束之后关闭 panel
-                        return true
-                    },
-                },
-            ],
-        }
-    })
+    function GenerateUserItem(users: Array<altUserType>) {
+        let res: string[] = []
+        res = users.map((user: altUserType) => {
+            return `<li class="t-user-group" data-id=${user.id} title=${user.name}>
+                      <span class="user-icon"><img src=${user.icon}/></span>
+                      <span  class="user-name">${user.name}</span>
+                    </li>`
+        })
+        return res.join('').replace(/&nbsp;/g, '')
+    }
+    function filterUser(key: string) {
+        const filterList: Array<altUserGroupType> = []
+        altUsers.forEach(tag => {
+            const filterTag = tag.list.filter(user => user.name.indexOf(key) > -1)
+            if (filterTag.length > 0) {
+                filterList.push({
+                    tag: tag.tag,
+                    list: filterTag,
+                })
+            }
+        })
+        GenerateAltUserStructure(filterList)
+    }
 
     return {
-        width: 300, // Panel容器宽度
+        width: 350, // Panel容器宽度
         height: 230, // Panel容器高度
-        tabs: tabsConf,
+        tabs: [
+            {
+                title: `艾特人`,
+                tpl: `<div>
+                        <section>
+                          <i class="icon-aite iconfont"></i>
+                        <input
+                            id="${inputTextId}"
+                            type="text"
+                            class="block"
+                            placeholder="想提及谁"/>
+                        </td>
+                        </section>
+                        <div class='group'>
+                          ${GenerateAltUserStructure(altUsers)}
+                        </div>
+               </div>`,
+                events: [
+                    {
+                        selector: '.t-user-group',
+                        type: 'click',
+                        fn: (e: Event) => {
+                            // e为事件对象
+                            const $target = $(e.target)
+                            const id = $target.attr('data-id')
+                            const name = $target.attr('title')
+                            let insertHtml
+                            insertHtml =
+                                `<span data-id="${id}" class="link" contenteditable="false">@` +
+                                name +
+                                '&nbsp;' +
+                                `</span>`
+                            editor.cmd.do('insertHTML', insertHtml)
+                            // 示函数执行结束之后关闭 panel
+                            return true
+                        },
+                    },
+                    {
+                        selector: `#${inputTextId}`,
+                        type: 'input',
+                        fn: (e: Event) => {
+                            // e为事件对象
+                            const val = $(e.target).val()
+                            filterUser(val)
+                            // 示函数执行结束之后关闭 panel
+                            // return true
+                        },
+                    },
+                ],
+            },
+        ],
     }
 }

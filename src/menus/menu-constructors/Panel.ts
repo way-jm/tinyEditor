@@ -71,10 +71,13 @@ class Panel {
 
         // 设置高度
         const height = conf.height // height: 0 即不用设置
+        const width = conf.width // height: 0 即不用设置
         if (height) {
             $tabContentContainer.css('height', height + 'px').css('overflow-y', 'auto')
         }
-
+        if (width) {
+            $tabContentContainer.css('width', width + 'px')
+        }
         // tabs
         const tabs = conf.tabs || []
         const tabContentArr: DomElement[] = []

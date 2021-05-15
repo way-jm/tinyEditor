@@ -8,17 +8,14 @@ import eventsConfig from './events'
 import pasteConfig from './paste'
 import imageConfig from './image'
 import textConfig from './text'
-
-// 字典类型
-export type DicType = {
-    [key: string]: string
-}
+import altUserConfig, { altUserGroupType } from './altUsaer'
 
 // 定义配置项的类型规范
 export type ConfigType = {
     height: number
     menus: string[]
     emotions: EmotionsType[]
+    altUsers: altUserGroupType[]
     zIndex: number
     onchange: Function | null
     onfocus: Function
@@ -57,6 +54,7 @@ const defaultConfig = Object.assign(
     pasteConfig,
     imageConfig,
     textConfig,
+    altUserConfig,
     //链接校验的配置函数
     {
         linkCheck: function (text: string, link: string): string | boolean {
