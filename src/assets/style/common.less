@@ -1,25 +1,11 @@
-.w-e-toolbar,
-.w-e-text-container,
-.w-e-menu-panel {
+.t-e-toolbar,
+.t-e-text-container,
+.t-e-menu-panel {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
     background-color: #fff;
-    h1 {
-        font-size: 32px !important;
-    }
-    h2 {
-        font-size: 24px !important;
-    }
-    h3 {
-        font-size: 18.72px !important;
-    }
-    h4 {
-        font-size: 16px !important;
-    }
-    h5 {
-        font-size: 13.28px !important;
-    }
+    color: rgba(64,81,102,.96);
     p {
         font-size: 16px !important;
     }
@@ -27,8 +13,12 @@
     .eleImg{
         cursor: pointer;
         display: inline-block;
-        font-size: 18px;
+        font-size: 19px;
         padding: 0 3px;
+        transition: all .2s linear;
+        &:hover{
+            transform: scale(1.5) rotate(30deg);
+        }
     }
     * {
         padding: 0;
@@ -39,27 +29,45 @@
     hr{
       cursor: pointer;
       display: block;
-      height: 0px;
+      height: 0;
       border: 0;
       border-top: 3px solid #ccc;
       margin: 20px 0;
     }
 }
+.t-e-toolbar{
+    border: 1px solid #dcdcdc;
+    border-radius: 3px 3px 0 0;
+}
 
-.w-e-clear-fix:after {
+.t-e-clear-fix:after {
     content: "";
     display: table;
     clear: both;
 }
 
-.w-e-drop-list-item {
+.t-e-drop-list-item {
     position: relative;
     top: 1px;
     padding-right: 7px;
     color: #333 !important;
 }
 
-.w-e-drop-list-tl {
+.t-e-drop-list-tl {
     padding-left: 10px;
     text-align: left;
+}
+.show{
+    transform-origin:left top;
+    animation: 0.15s  showAnimate linear;
+}
+@keyframes showAnimate {
+    0%{
+        opacity: 0.75;
+        transform: scale(0.5);
+    }
+    100%{
+        opacity: 1;
+        transform: scale(1);
+    }
 }

@@ -17,7 +17,7 @@ class Image extends PanelMenu implements MenuActive {
 
     constructor(editor: Editor) {
         let $elem = $(
-            '<div class="w-e-menu" data-title="图片"><i class="w-e-icon-image"></i></div>'
+            '<div class="t-e-menu" data-title="图片"><i class="icon-tupian iconfont"></i></div>'
         )
         let imgPanelConfig = createPanelConf(editor)
         if (imgPanelConfig.onlyUploadConf) {

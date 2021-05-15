@@ -51,7 +51,7 @@ class Menu {
      */
     protected active(): void {
         this._active = true
-        this.$elem.addClass('w-e-active')
+        this.$elem.addClass('t-e-active')
     }
 
     /**
@@ -59,7 +59,7 @@ class Menu {
      */
     protected unActive(): void {
         this._active = false
-        this.$elem.removeClass('w-e-active')
+        this.$elem.removeClass('t-e-active')
     }
 
     /**

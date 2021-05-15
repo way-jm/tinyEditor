@@ -5,9 +5,8 @@
 
 import menusConfig, { EmotionsType } from './menus'
 import eventsConfig from './events'
-import styleConfig from './style'
 import pasteConfig from './paste'
-import imageConfig, { UploadImageHooksType } from './image'
+import imageConfig from './image'
 import textConfig from './text'
 
 // 字典类型
@@ -19,7 +18,6 @@ export type DicType = {
 export type ConfigType = {
     height: number
     menus: string[]
-    excludeMenus: string[]
     emotions: EmotionsType[]
     zIndex: number
     onchange: Function | null
@@ -31,7 +29,6 @@ export type ConfigType = {
     pasteTextHandle: Function
     styleWithCSS: boolean
     linkImgCallback: Function
-
     placeholder: string
     zIndexFullScreen: number
     showFullScreen: boolean
@@ -41,11 +38,6 @@ export type ConfigType = {
     uploadImgShowBase64: boolean
     uploadImgMaxSize: number
     uploadImgMaxLength: number
-    uploadFileName: string
-    uploadImgParams: DicType
-    uploadImgParamsWithUrl: boolean
-    uploadImgHeaders: DicType
-    uploadImgHooks: UploadImageHooksType
     uploadImgTimeout: number
     withCredentials: boolean
     customUploadImg: Function | null
@@ -62,7 +54,6 @@ const defaultConfig = Object.assign(
     {},
     menusConfig,
     eventsConfig,
-    styleConfig,
     pasteConfig,
     imageConfig,
     textConfig,

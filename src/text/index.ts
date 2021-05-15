@@ -534,7 +534,7 @@ class Text {
         editor.$textContainerElem.on('mousedown', (e: MouseEvent) => {
             const target = e.target as HTMLElement
             const $target = $(target)
-            if ($target.hasClass('w-e-img-drag-rb')) {
+            if ($target.hasClass('t-e-img-drag-rb')) {
                 // 点击的元素，是图片拖拽调整大小的 bar
                 const imgDragBarMouseDownEvents = eventHooks.imgDragBarMouseDownEvents
                 imgDragBarMouseDownEvents.forEach(fn => fn())

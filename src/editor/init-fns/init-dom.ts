@@ -36,14 +36,8 @@ export default function (editor: Editor): void {
         $toolbarSelector.append($toolbarElem).append($textContainerElem)
 
         // 自行创建的，需要配置默认的样式
-        $toolbarElem
-            .css('background-color', styleSettings.toolbarBgColor)
-            .css('border', styleSettings.border)
-            .css('border-bottom', styleSettings.toolbarBottomBorder)
-        $textContainerElem
-            .css('border', styleSettings.border)
-            .css('border-top', 'none')
-            .css('height', `${height}px`)
+        $toolbarElem.css('background-color', styleSettings.toolbarBgColor)
+        $textContainerElem.css('border-top', 'none').css('height', `${height}px`)
     } else {
         // toolbarSelector 和 textSelector 都有
         $toolbarSelector.append($toolbarElem)
@@ -74,6 +68,7 @@ export default function (editor: Editor): void {
         // 编辑器有默认值的时候隐藏placeholder
         $placeholder.hide()
     } else {
+
         $textElem.append($(EMPTY_P)) // 新增一行，方便继续编辑
     }
 
@@ -91,10 +86,10 @@ export default function (editor: Editor): void {
     $textContainerElem.append($placeholder)
 
     // 设置通用的 class
-    $toolbarElem.addClass('w-e-toolbar').css('z-index', 10001)
-    $textContainerElem.addClass('w-e-text-container')
+    $toolbarElem.addClass('t-e-toolbar').css('z-index', 10001)
+    $textContainerElem.addClass('t-e-text-container')
     $textContainerElem.css('z-index', 10000)
-    $textElem.addClass('w-e-text')
+    $textElem.addClass('t-e-text')
 
     // 添加 ID
     const toolbarElemId = getRandom('toolbar-elem')
@@ -131,16 +126,12 @@ export function selectorValidator(editor: Editor) {
         text: $('<div></div>'),
     }
 
-    if (toolbarSelector == null) {
-        throw new Error('错误：初始化编辑器时候未传入任何参数，请查阅文档')
-    } else {
-        $el.bar = $(toolbarSelector)
-        if (!$el.bar.elems.length) {
-            throw new Error(`无效的节点选择器：${toolbarSelector}`)
-        }
-        if (regexp.test($el.bar.attr(name))) {
-            throw new Error('初始化节点已存在编辑器实例，无法重复创建编辑器')
-        }
+    $el.bar = $(toolbarSelector)
+    if (!$el.bar.elems.length) {
+        throw new Error(`无效的节点选择器：${toolbarSelector}`)
+    }
+    if (regexp.test($el.bar.attr(name))) {
+        throw new Error('初始化节点已存在编辑器实例，无法重复创建编辑器')
     }
     if (textSelector) {
         $el.text = $(textSelector)

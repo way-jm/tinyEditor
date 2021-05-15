@@ -22,28 +22,15 @@ class Menus {
     public init(): void {
         // 从用户配置的 menus 入手，看需要初始化哪些菜单
         const config = this.editor.config
-
-        // 排除exclude包含的菜单
-        let excludeMenus: string[] | any = config.excludeMenus
-        if (Array.isArray(excludeMenus) === false) excludeMenus = []
-        config.menus = config.menus.filter(key => excludeMenus.includes(key) === false)
-
-        // 排除自扩展中exclude包含的菜单
-        let CustomMenuKeysList: string[] = Object.keys(Editor.globalCustomMenuConstructorList)
-        CustomMenuKeysList = CustomMenuKeysList.filter(key => excludeMenus.includes(key))
-        CustomMenuKeysList.forEach((key: string) => {
-            delete Editor.globalCustomMenuConstructorList[key]
-        })
-
         config.menus.forEach(menuKey => {
+            console.log(menuKey)
             const MenuConstructor = this.constructorList[menuKey] // 暂用 any ，后面再替换
             this._initMenuList(menuKey, MenuConstructor)
         })
 
         // 全局注册
         for (let [menuKey, menuFun] of Object.entries(Editor.globalCustomMenuConstructorList)) {
-            const MenuConstructor = menuFun // 暂用 any ，后面再替换
-            this._initMenuList(menuKey, MenuConstructor)
+            this._initMenuList(menuKey, menuFun)
         }
 
         // 渲染 DOM

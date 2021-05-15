@@ -12,10 +12,6 @@ import Editor from '../../../editor/index'
  */
 export function createShowHideFn(editor: Editor) {
     let tooltip: Tooltip | null
-    const t = (text: string, prefix: string = ''): string => {
-        return ''
-    }
-
     /**
      * 显示 tooltip
      * @param $node 链接元素
@@ -23,7 +19,7 @@ export function createShowHideFn(editor: Editor) {
     function showImgTooltip($node: DomElement) {
         const conf: TooltipConfType = [
             {
-                $elem: $("<span class='w-e-icon-trash-o'></span>"),
+                $elem: $("<span class='t-e-icon-trash-o'></span>"),
                 onClick: (editor: Editor, $node: DomElement) => {
                     // 选中img元素
                     editor.selection.createRangeByElem($node)
@@ -66,7 +62,7 @@ export function createShowHideFn(editor: Editor) {
         ]
 
         conf.push({
-            $elem: $(`<span>${t('重置')}</span>`),
+            $elem: $(`<span>重置</span>`),
             onClick: (editor: Editor, $node: DomElement) => {
                 $node.removeAttr('width')
                 $node.removeAttr('height')
@@ -78,7 +74,7 @@ export function createShowHideFn(editor: Editor) {
 
         if ($node.attr('data-href')) {
             conf.push({
-                $elem: $(`<span>${t('查看链接')}</span>`),
+                $elem: $(`<span>查看链接</span>`),
                 onClick: (editor: Editor, $node: DomElement) => {
                     let link = $node.attr('data-href')
                     if (link) {

@@ -20,7 +20,7 @@ function createShowHideFn(editor: Editor) {
     function showLinkTooltip($link: DomElement) {
         const conf: TooltipConfType = [
             {
-                $elem: $(`<span>'查看链接'</span>`),
+                $elem: $(`<span>查看链接</span>`),
                 onClick: (editor: Editor, $link: DomElement) => {
                     const link = $link.attr('href')
                     window.open(link, '_target')

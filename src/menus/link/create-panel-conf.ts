@@ -4,11 +4,11 @@
  */
 
 import Editor from '../../editor/index'
-import { PanelConf } from '../menu-constructors/Panel'
-import { getRandom } from '../../utils/util'
-import $, { DomElement } from '../../utils/dom-core'
+import {PanelConf} from '../menu-constructors/Panel'
+import {getRandom} from '../../utils/util'
+import $, {DomElement} from '../../utils/dom-core'
 import isActive from './is-active'
-import { insertHtml } from './util'
+import {insertHtml} from './util'
 
 export default function (editor: Editor, text: string, link: string): PanelConf {
     // panel 中需要用到的id
@@ -96,26 +96,32 @@ export default function (editor: Editor, text: string, link: string): PanelConf 
                 title: '链接',
                 // 模板
                 tpl: `<div>
+                        <section>
+                          <i class="icon-wenzi4 iconfont"></i>
                         <input
                             id="${inputTextId}"
                             type="text"
                             class="block"
                             value="${text}"
-                            placeholder="'链接文字'"/>
+                            placeholder="输入链接文本"/>
                         </td>
+                        </section>
+                        <section>
+                        <i class="icon-lianjie iconfont"></i>
                         <input
                             id="${inputLinkId}"
                             type="text"
                             class="block"
                             value="${link}"
-                            placeholder="'http://'"/>
+                            placeholder="输入链接地址"/>
+                            </section>
                         </td>
-                        <div class="w-e-button-container">
+                        <div class="t-e-button-container">
                             <button type="button" id="${btnOkId}" class="right">
-                              '插入链接'
+                              插入链接
                             </button>
                             <button type="button" id="${btnDelId}" class="gray right" style="display:${delBtnDisplay}">
-                              '取消链接'
+                              取消链接
                             </button>
                         </div>
                     </div>`,

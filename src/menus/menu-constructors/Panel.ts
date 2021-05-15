@@ -35,7 +35,7 @@ class Panel {
     constructor(menu: PanelMenu, conf: PanelConf) {
         this.menu = menu
         this.conf = conf
-        this.$container = $('<div class="w-e-panel-container"></div>')
+        this.$container = $('<div class="t-e-panel-container show"></div>')
 
         // 隐藏 panel
         const editor = menu.editor
@@ -58,40 +58,16 @@ class Panel {
 
         // panel 的容器
         const $container = this.$container
-        const width = conf.width || 300 // 默认 300px
-        const rect = menu.editor.$toolbarElem.getBoundingClientRect()
-        const menuRect = menu.$elem.getBoundingClientRect()
-        const top = rect.height + rect.top - menuRect.top
-        let left = (rect.width - width) / 2 + rect.left - menuRect.left
-        const offset = 300 // icon与panel菜单距离偏移量暂定 300
-        if (Math.abs(left) > offset) {
-            // panel菜单离工具栏icon过远时，让panel菜单出现在icon正下方，处理边界逻辑
-            if (menuRect.left < document.documentElement.clientWidth / 2) {
-                // icon在左侧
-                left = -menuRect.width / 2
-            } else {
-                // icon在右侧
-                left = -width + menuRect.width / 2
-            }
-        }
-
-        $container
-            .css('width', width + 'px')
-            .css('margin-top', `${top}px`)
-            .css('margin-left', `${left}px`)
-            .css('z-index', 10002)
-
         // 添加关闭按钮
-        const $closeBtn = $('<i class="w-e-icon-close w-e-panel-close"></i>')
+        const $closeBtn = $('<i class="t-e-icon-close t-e-panel-close"></i>')
         $container.append($closeBtn)
         $closeBtn.on('click', () => {
             this.remove()
         })
 
         // 准备 tabs 容器
-        const $tabTitleContainer = $('<ul class="w-e-panel-tab-title"></ul>')
-        const $tabContentContainer = $('<div class="w-e-panel-tab-content"></div>')
-        $container.append($tabTitleContainer).append($tabContentContainer)
+        const $tabContentContainer = $('<div class="t-e-panel-tab-content"></div>')
+        $container.append($tabContentContainer)
 
         // 设置高度
         const height = conf.height // height: 0 即不用设置
@@ -101,53 +77,23 @@ class Panel {
 
         // tabs
         const tabs = conf.tabs || []
-        const tabTitleArr: DomElement[] = []
         const tabContentArr: DomElement[] = []
 
         tabs.forEach((tab: PanelTabConf, tabIndex: number) => {
             if (!tab) {
                 return
             }
-            const title = tab.title || ''
             const tpl = tab.tpl || ''
-
-            // 添加到 DOM
-            const $title = $(`<li class="w-e-item">${title}</li>`)
-            $tabTitleContainer.append($title)
             const $content = $(tpl)
             $tabContentContainer.append($content)
 
             // 记录到内存
-            tabTitleArr.push($title)
             tabContentArr.push($content)
 
             // 设置 active 项
-            if (tabIndex === 0) {
-                $title.data('active', true)
-                $title.addClass('w-e-active')
-            } else {
+            if (tabIndex !== 0) {
                 $content.hide()
             }
-
-            // 绑定 tab 的事件
-            $title.on('click', () => {
-                if ($title.data('active')) {
-                    return
-                }
-                // 隐藏所有的 tab
-                tabTitleArr.forEach($title => {
-                    $title.data('active', false)
-                    $title.removeClass('w-e-active')
-                })
-                tabContentArr.forEach($content => {
-                    $content.hide()
-                })
-
-                // 显示当前的 tab
-                $title.data('active', true)
-                $title.addClass('w-e-active')
-                $content.show()
-            })
         })
 
         // 绑定关闭事件
@@ -158,6 +104,7 @@ class Panel {
 
         // 添加到 DOM
         menu.$elem.append($container)
+        $container.addClass('show')
 
         // 绑定 conf events 的事件，只有添加到 DOM 之后才能绑定成功
         tabs.forEach((tab: PanelTabConf, index: number) => {

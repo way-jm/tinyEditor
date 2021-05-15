@@ -17,7 +17,7 @@ class Progress {
     constructor(editor: Editor) {
         this.editor = editor
         this.$textContainer = editor.$textContainerElem
-        this.$bar = $('<div class="w-e-progress"></div>')
+        this.$bar = $('<div class="t-e-progress"></div>')
 
         this.isShow = false
         this.time = 0

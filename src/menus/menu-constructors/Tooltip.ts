@@ -33,7 +33,7 @@ class Tooltip {
         this._isInsertTextContainer = false
         // 定义 container
         const $container = $('<div></div>')
-        $container.addClass('w-e-tooltip')
+        $container.addClass('t-e-tooltip')
         this.$container = $container
     }
 
@@ -72,15 +72,15 @@ class Tooltip {
             if (absoluteTop > tooltipHeight + 5) {
                 // 说明模板元素的顶部空间足够
                 top = absoluteTop - tooltipHeight - 15
-                $container.addClass('w-e-tooltip-up')
+                $container.addClass('t-e-tooltip-up')
             } else if (absoluteTop + offsetHeight + tooltipHeight < targetParentElemHeight) {
                 // 说明模板元素的底部空间足够
                 top = absoluteTop + offsetHeight + 10
-                $container.addClass('w-e-tooltip-down')
+                $container.addClass('t-e-tooltip-down')
             } else {
                 // 其他情况，tooltip 放在目标元素左上角
                 top = (absoluteTop > 0 ? absoluteTop : 0) + tooltipHeight + 10
-                $container.addClass('w-e-tooltip-down')
+                $container.addClass('t-e-tooltip-down')
             }
             // 计算 left
             if (offsetLeft < 0) {
@@ -92,15 +92,15 @@ class Tooltip {
             if (targetElemRect.top < tooltipHeight) {
                 // 说明目标元素的顶部，因滑动隐藏在浏览器上方。tooltip 要放在目标元素下面
                 top = targetElemRect.bottom + pageScrollTop + 5 // 5px 间距
-                $container.addClass('w-e-tooltip-down')
+                $container.addClass('t-e-tooltip-down')
             } else if (targetElemRect.top - textElemRect.top < tooltipHeight) {
                 // 说明目标元素的顶部，因滑动隐藏在编辑区域上方。tooltip 要放在目标元素下面
                 top = targetElemRect.bottom + pageScrollTop + 5 // 5px 间距
-                $container.addClass('w-e-tooltip-down')
+                $container.addClass('t-e-tooltip-down')
             } else {
                 // 其他情况，tooltip 放在目标元素上方
                 top = targetElemRect.top + pageScrollTop - tooltipHeight - 15 // 减去 toolbar 的高度，还有 15px 间距
-                $container.addClass('w-e-tooltip-up')
+                $container.addClass('t-e-tooltip-up')
             }
             // 计算 left
             if (targetElemRect.left < 0) {
@@ -127,7 +127,7 @@ class Tooltip {
             // 添加元素
             const $elem = item.$elem
             const $wrapper = $('<div></div>')
-            $wrapper.addClass('w-e-tooltip-item-wrapper ')
+            $wrapper.addClass('t-e-tooltip-item-wrapper ')
             $wrapper.append($elem)
             $container.append($wrapper)
 

@@ -1,7 +1,3 @@
-/**
- * @description 插入表情
- * @author liuwe
- */
 import $ from '../../utils/dom-core'
 import Editor from '../../editor/index'
 import PanelMenu from '../menu-constructors/PanelMenu'
@@ -9,11 +5,11 @@ import Panel from '../menu-constructors/Panel'
 import { MenuActive } from '../menu-constructors/Menu'
 import createPanelConf from './create-panel-conf'
 
-class Emoticon extends PanelMenu implements MenuActive {
+class AltUser extends PanelMenu implements MenuActive {
     constructor(editor: Editor) {
         const $elem = $(
-            `<div class="t-e-menu" data-title="表情">
-                <i class="iconfont icon-biaoqing"></i>
+            `<div class="t-e-menu" data-title="@成员">
+                <i class="iconfont icon-aite"></i>
             </div>`
         )
         super($elem, editor)
@@ -33,8 +29,7 @@ class Emoticon extends PanelMenu implements MenuActive {
     public clickHandler(): void {
         this.createPanel()
     }
-
     public tryChangeActive() {}
 }
 
-export default Emoticon
+export default AltUser

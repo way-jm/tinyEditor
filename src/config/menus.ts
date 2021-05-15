@@ -15,7 +15,7 @@ export type EmotionsType = {
 
 /*表情菜单数据结构类型END*/
 export default {
-    menus: ['bold', 'italic', 'link', 'emoticon', 'image'],
+    menus: ['bold', 'link', 'emoticon', 'image', 'alt'],
     /**
      * 表情配置菜单
      * 如果为emoji表情直接作为元素插入

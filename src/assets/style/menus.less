@@ -1,15 +1,13 @@
-.w-e-toolbar {
+.t-e-toolbar {
     display: flex;
-    padding: 0 6px;
     flex-wrap: wrap;
     position: relative;
 
     /* 单个菜单 */
-    .w-e-menu {
-        position: relative;
+    .t-e-menu {
         display: flex;
-        width: 40px;
-        height: 40px;
+        width: 35px;
+        height: 35px;
         align-items: center;
         justify-content: center;
         text-align: center;
@@ -19,26 +17,29 @@
         }
 
         &:hover {
-            background-color: #F6F6F6;
-
-            i {
-                color: #333;
+            div{
+                >i{
+                    color: #06BDAB;
+                }
+            }
+            >i {
+                color: #06BDAB;
             }
         }
     }
-    .w-e-active {
+    .t-e-active {
         i {
-            color: #1e88e5;
+            color: #06BDAB;
         }
         &:hover {
             i {
-                color: #1e88e5;
+                color: #06BDAB;
             }
         }
     }
 }
 
-.w-e-menu-tooltip {
+.t-e-menu-tooltip {
     position: absolute;
     display: flex;
     color: #f1f1f1;
@@ -50,7 +51,7 @@
     align-items: center;
 }
 // 下箭头
-.w-e-menu-tooltip-up::after {
+.t-e-menu-tooltip-up::after {
     content: "";
     position: absolute;
     top: 100%;
@@ -60,7 +61,7 @@
     border-top-color: rgba(0, 0, 0, .73);
 }
 // 上箭头
-.w-e-menu-tooltip-down::after {
+.t-e-menu-tooltip-down::after {
     content: "";
     position: absolute;
     bottom: 100%;
@@ -69,7 +70,7 @@
     border: 5px solid rgba(0, 0, 0, 0);
     border-bottom-color: rgba(0, 0, 0, .73);
 }
-.w-e-menu-tooltip-item-wrapper {
+.t-e-menu-tooltip-item-wrapper {
     font-size: 14px;
     margin: 0 5px;
 }

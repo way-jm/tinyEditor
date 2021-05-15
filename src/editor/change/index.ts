@@ -13,54 +13,22 @@ import { EMPTY_FN } from '../../utils/const'
  * @param mutations MutationRecord[]
  * @param tar 编辑区容器的 DOM 节点
  */
-function mutationsFilter(mutations: MutationRecord[], tar: Node) {
-    // 剔除编辑区容器的 attribute 变化中的非 contenteditable 变化
-    return mutations.filter(({ type, target, attributeName }) => {
-        return (
-            type != 'attributes' ||
-            (type == 'attributes' && (attributeName == 'contenteditable' || target != tar))
-        )
-    })
-}
 
 /**
  * Change 实现
  */
 export default class Change extends Mutation {
     /**
-     * 变化的数据集合
-     */
-    private data: MutationRecord[] = []
-
-    /**
      * 异步保存数据
      */
     private asyncSave: Function = EMPTY_FN
 
     constructor(public editor: Editor) {
-        super((mutations, observer) => {
-            // 数据过滤
-            mutations = mutationsFilter(mutations, observer.target as Node)
-
+        super(() => {
             // 存储数据
-            this.data.push(...mutations)
             this.asyncSave()
         })
     }
-
-    /**
-     * 保存变化的数据并发布 change event
-     */
-    private save() {
-        // 有数据
-        if (this.data.length) {
-            // 清除缓存
-            this.data.length = 0
-
-            this.emit()
-        }
-    }
-
     /**
      * 发布 change event
      */
@@ -75,7 +43,7 @@ export default class Change extends Mutation {
 
         let timeout = this.editor.config.onchangeTimeout
         this.asyncSave = debounce(() => {
-            this.save()
+            this.emit()
         }, timeout)
     }
 }
