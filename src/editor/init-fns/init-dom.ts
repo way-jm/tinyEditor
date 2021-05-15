@@ -68,7 +68,6 @@ export default function (editor: Editor): void {
         // 编辑器有默认值的时候隐藏placeholder
         $placeholder.hide()
     } else {
-
         $textElem.append($(EMPTY_P)) // 新增一行，方便继续编辑
     }
 

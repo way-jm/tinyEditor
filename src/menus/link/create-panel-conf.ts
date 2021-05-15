@@ -4,11 +4,11 @@
  */
 
 import Editor from '../../editor/index'
-import {PanelConf} from '../menu-constructors/Panel'
-import {getRandom} from '../../utils/util'
-import $, {DomElement} from '../../utils/dom-core'
+import { PanelConf } from '../menu-constructors/Panel'
+import { getRandom } from '../../utils/util'
+import $, { DomElement } from '../../utils/dom-core'
 import isActive from './is-active'
-import {insertHtml} from './util'
+import { insertHtml } from './util'
 
 export default function (editor: Editor, text: string, link: string): PanelConf {
     // panel 中需要用到的id
