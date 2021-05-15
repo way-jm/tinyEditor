@@ -3,13 +3,7 @@
  * @author way
  */
 
-import menusConfig, {
-    EmotionsType,
-    FontSizeConfType,
-    IndentationType,
-    tooltipPositionType,
-    FontStyleType,
-} from './menus'
+import menusConfig, { EmotionsType } from './menus'
 import eventsConfig from './events'
 import styleConfig from './style'
 import pasteConfig from './paste'
@@ -18,7 +12,6 @@ import imageConfig, { UploadImageHooksType } from './image'
 import textConfig from './text'
 import langConfig from './lang'
 import historyConfig from './history'
-import videoConfig, { UploadVideoHooksType } from './video'
 
 // 字典类型
 export type DicType = {
@@ -32,12 +25,6 @@ export type ConfigType = {
     languageTab: string
     menus: string[]
     excludeMenus: string[]
-    fontNames: FontStyleType
-    lineHeights: string[]
-    showMenuTooltips: boolean
-    indentation: IndentationType
-    fontSizes: FontSizeConfType
-    colors: string[]
     emotions: EmotionsType[]
     zIndex: number
     onchange: Function | null
@@ -81,27 +68,7 @@ export type ConfigType = {
     linkImgCheck: Function
     compatibleMode: () => boolean
     historyMaxSize: number
-
     focus: boolean
-
-    onlineVideoCheck: Function
-    onlineVideoCallback: Function
-
-    showLinkVideo: Boolean
-    uploadVideoAccept: string[]
-    uploadVideoServer: string
-    uploadVideoMaxSize: number
-    uploadVideoName: string
-    uploadVideoParams: DicType
-    uploadVideoParamsWithUrl: boolean
-    uploadVideoHeaders: DicType
-    uploadVideoHooks: UploadVideoHooksType
-    uploadVideoTimeout: number
-    withVideoCredentials: boolean
-    customUploadVideo: Function | null
-    customInsertVideo: Function | null
-
-    menuTooltipPosition: tooltipPositionType
 }
 
 export type Resource = {
@@ -130,7 +97,6 @@ const defaultConfig = Object.assign(
     textConfig,
     langConfig,
     historyConfig,
-    videoConfig,
     //链接校验的配置函数
     {
         linkCheck: function (text: string, link: string): string | boolean {
