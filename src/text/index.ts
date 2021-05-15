@@ -6,7 +6,7 @@
 import $, { DomElement } from '../utils/dom-core'
 import Editor from '../editor/index'
 import initEventHooks from './event-hooks/index'
-import { UA, throttle } from '../utils/util'
+import { throttle } from '../utils/util'
 import getChildrenJSON, { NodeListType } from './getChildrenJSON'
 import getHtmlByNodeList from './getHtmlByNodeList'
 import { EMPTY_P, EMPTY_P_LAST_REGEX, EMPTY_P_REGEX } from '../utils/const'
@@ -362,11 +362,8 @@ class Text {
 
         // 粘贴
         $textElem.on('paste', (e: ClipboardEvent) => {
-            if (UA.isIE()) return // IE 不支持
-
             // 阻止默认行为，使用 execCommand 的粘贴命令
             e.preventDefault()
-
             const pasteEvents = eventHooks.pasteEvents
             pasteEvents.forEach(fn => fn(e))
         })
@@ -375,20 +372,11 @@ class Text {
         $textElem.on('keydown', (e: KeyboardEvent) => {
             if (
                 // 编辑器处于聚焦状态下（多编辑器实例） || 当前处于兼容模式（兼容模式撤销/恢复后不聚焦，所以直接过，但会造成多编辑器同时撤销/恢复）
-                (editor.isFocus || editor.isCompatibleMode) &&
+                editor.isFocus &&
                 (e.ctrlKey || e.metaKey) &&
                 e.keyCode === 90
             ) {
-                // 取消默认行为
-                e.preventDefault()
-                // 执行事件
-                if (e.shiftKey) {
-                    // 恢复
-                    editor.history.restore()
-                } else {
-                    // 撤销
-                    editor.history.revoke()
-                }
+                console.log('ctrl+z')
             }
         })
 

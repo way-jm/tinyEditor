@@ -15,7 +15,6 @@ import initSelection from './init-fns/init-selection'
 import bindEvent from './init-fns/bind-event'
 import ZIndex from './z-index'
 import Change from './change/index'
-import History from './history/index'
 
 // 创建菜单的 class
 import { MenuListType } from '../menus/menu-list'
@@ -46,14 +45,12 @@ class Editor {
     public textElemId: string
     public isFocus: boolean
     public isComposing: boolean
-    public isCompatibleMode: boolean
     public selection: SelectionAndRangeAPI
     public cmd: CommandAPI
     public txt: Text
     public menus: Menus
     public zIndex: ZIndex
     public change: Change
-    public history: History
 
     // 实例销毁前需要执行的钩子集合
     private beforeDestroyHooks: Function[] = []
@@ -81,7 +78,6 @@ class Editor {
         this.textElemId = ''
         this.isFocus = false
         this.isComposing = false
-        this.isCompatibleMode = false
 
         this.selection = new SelectionAndRangeAPI(this)
         this.cmd = new CommandAPI(this)
@@ -89,7 +85,6 @@ class Editor {
         this.menus = new Menus(this)
         this.zIndex = new ZIndex()
         this.change = new Change(this)
-        this.history = new History(this)
     }
 
     /**
@@ -107,13 +102,7 @@ class Editor {
         // 初始化 ZIndex
         this.zIndex.init(this)
 
-        // 确定当前的历史记录模式
-        this.isCompatibleMode = this.config.compatibleMode()
-
-        // 标准模式下，重置延迟时间
-        if (!this.isCompatibleMode) {
-            this.config.onchangeTimeout = 30
-        }
+        this.config.onchangeTimeout = 30
 
         // 国际化 因为要在创建菜单前使用 所以要最先 初始化
 
@@ -134,8 +123,6 @@ class Editor {
 
         // 绑定监听的目标节点
         this.change.observe()
-
-        this.history.observe()
     }
 
     /**

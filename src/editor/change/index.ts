@@ -4,7 +4,7 @@
  */
 
 import Editor from '../index'
-import Mutation from '../../utils/observer/mutation'
+import Mutation from './mutation'
 import { debounce } from '../../utils/util'
 import { EMPTY_FN } from '../../utils/const'
 
@@ -44,18 +44,7 @@ export default class Change extends Mutation {
 
             // 存储数据
             this.data.push(...mutations)
-
-            // 标准模式下
-            if (!editor.isCompatibleMode) {
-                // 在非中文输入状态下时才保存数据
-                if (!editor.isComposing) {
-                    return this.asyncSave()
-                }
-            }
-            // 兼容模式下
-            else {
-                this.asyncSave()
-            }
+            this.asyncSave()
         })
     }
 
@@ -65,9 +54,6 @@ export default class Change extends Mutation {
     private save() {
         // 有数据
         if (this.data.length) {
-            // 保存变化数据
-            this.editor.history.save(this.data)
-
             // 清除缓存
             this.data.length = 0
 
@@ -91,11 +77,5 @@ export default class Change extends Mutation {
         this.asyncSave = debounce(() => {
             this.save()
         }, timeout)
-
-        if (!this.editor.isCompatibleMode) {
-            this.editor.$textElem.on('compositionend', () => {
-                this.asyncSave()
-            })
-        }
     }
 }

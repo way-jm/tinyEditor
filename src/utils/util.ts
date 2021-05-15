@@ -3,39 +3,6 @@
  * @author way
  */
 
-class NavUA {
-    public _ua: string
-
-    // 是否为旧版 Edge
-    public isOldEdge: boolean
-
-    // 是否为 Firefox
-    public isFirefox: boolean
-
-    constructor() {
-        this._ua = navigator.userAgent
-
-        const math = this._ua.match(/(Edge?)\/(\d+)/)
-        this.isOldEdge = math && math[1] == 'Edge' && parseInt(math[2]) < 19 ? true : false
-
-        this.isFirefox =
-            /Firefox\/\d+/.test(this._ua) && !/Seamonkey\/\d+/.test(this._ua) ? true : false
-    }
-
-    // 是否为 IE
-    public isIE() {
-        return 'ActiveXObject' in window
-    }
-
-    // 是否为 webkit
-    public isWebkit() {
-        return /webkit/i.test(this._ua)
-    }
-}
-
-// 和 UA 相关的属性
-export const UA = new NavUA()
-
 /**
  * 获取随机字符
  * @param prefix 前缀
@@ -219,21 +186,4 @@ export function toArray<T>(data: T) {
  */
 export function getRandomCode() {
     return Math.random().toString(36).slice(-5)
-}
-
-/**
- * hex color 转换成 rgb
- * @param hex string
- */
-export function hexToRgb(hex: string) {
-    const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex)
-
-    if (result == null) return null
-
-    const colors = result.map(i => parseInt(i, 16))
-    const r = colors[1]
-    const g = colors[2]
-    const b = colors[3]
-
-    return `rgb(${r}, ${g}, ${b})`
 }

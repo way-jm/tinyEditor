@@ -10,8 +10,6 @@ import pasteConfig from './paste'
 import cmdConfig from './cmd'
 import imageConfig, { UploadImageHooksType } from './image'
 import textConfig from './text'
-import langConfig from './lang'
-import historyConfig from './history'
 
 // 字典类型
 export type DicType = {
@@ -39,6 +37,7 @@ export type ConfigType = {
 
     placeholder: string
     zIndexFullScreen: number
+    showFullScreen: boolean
     showLinkImgHref: boolean
     uploadImgAccept: string[]
     uploadImgServer: string
@@ -55,32 +54,12 @@ export type ConfigType = {
     customUploadImg: Function | null
     uploadImgFromMedia: Function | null
     customAlert: Function
-
     onCatalogChange: Function | null
-
-    lang: string
-    languages: typeof langConfig
-
     linkCheck: Function
     linkImgCheck: Function
-    compatibleMode: () => boolean
     historyMaxSize: number
     focus: boolean
 }
-
-export type Resource = {
-    [language: string]: ResourceLanguage
-}
-
-export type ResourceLanguage = {
-    [namespace: string]: ResourceKey
-}
-
-export type ResourceKey =
-    | string
-    | {
-          [key: string]: any
-      }
 
 // 合并所有的配置信息
 const defaultConfig = Object.assign(
@@ -92,8 +71,6 @@ const defaultConfig = Object.assign(
     pasteConfig,
     imageConfig,
     textConfig,
-    langConfig,
-    historyConfig,
     //链接校验的配置函数
     {
         linkCheck: function (text: string, link: string): string | boolean {

@@ -1,8 +1,3 @@
-/**
- * @description 所有菜单的构造函数
- * @author way
- */
-
 import Bold from './bold/index'
 import Link from './link/index'
 import Italic from './italic/index'

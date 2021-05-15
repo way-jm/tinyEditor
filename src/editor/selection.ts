@@ -3,7 +3,6 @@
  * @author way
  */
 import $, { DomElement } from '../utils/dom-core'
-import { UA } from '../utils/util'
 import Editor from './index'
 import { EMPTY_P } from '../utils/const'
 
@@ -169,7 +168,6 @@ class SelectionAndRange {
     public createEmptyRange(): void {
         const editor = this.editor
         const range = this.getRange()
-        let $elem: DomElement
 
         if (!range) {
             // 当前无 range
@@ -182,22 +180,17 @@ class SelectionAndRange {
 
         try {
             // 目前只支持 webkit 内核
-            if (UA.isWebkit()) {
-                // 插入 &#8203
-                editor.cmd.do('insertHTML', '&#8203;')
-                // 修改 offset 位置
-                range.setEnd(range.endContainer, range.endOffset + 1)
-                // 存储
-                this.saveRange(range)
-            } else {
-                $elem = $('<strong>&#8203;</strong>')
-                editor.cmd.do('insertElem', $elem)
-                this.createRangeByElem($elem, true)
-            }
+            // 插入 &#8203
+            editor.cmd.do('insertHTML', '&#8203;')
+            // 修改 offset 位置
+            range.setEnd(range.endContainer, range.endOffset + 1)
+            // 存储
+            this.saveRange(range)
         } catch (ex) {
             // 部分情况下会报错，兼容一下
         }
     }
+
     /**
      * 重新设置选区
      * @param startDom 选区开始的元素
@@ -216,6 +209,7 @@ class SelectionAndRange {
         //恢复选区
         this.restoreSelection()
     }
+
     /**
      * 根据 DOM 元素设置选区
      * @param $elem DOM 元素
@@ -279,12 +273,6 @@ class SelectionAndRange {
         //对文本节点特殊处理
         let len: number =
             node.nodeType === 3 ? (node.nodeValue?.length as number) : node.childNodes.length
-        if ((UA.isFirefox || UA.isIE()) && len !== 0) {
-            // firefox下在节点为文本节点和节点最后一个元素为文本节点的情况下
-            if (node.nodeType === 3 || node.childNodes[len - 1].nodeName === 'BR') {
-                len = len - 1
-            }
-        }
         let pos: number = position ?? len
         if (!range) {
             return
@@ -322,10 +310,10 @@ class SelectionAndRange {
     public recordSelectionNodes($node: DomElement, $endElem: DomElement): DomElement[] {
         let $list: DomElement[] = []
         let isEnd = true
-        /**  
-        @author:lw
-        @description 解决ctrl+a全选报错的bug $elem.getNodeName()可能会触发$elem[0]未定义
-        **/
+        /**
+         @author:lw
+         @description 解决ctrl+a全选报错的bug $elem.getNodeName()可能会触发$elem[0]未定义
+         **/
         try {
             let $NODE: DomElement = $node
             const $textElem = this.editor.$textElem
