@@ -156,7 +156,7 @@ class Tooltip {
         $container.css('left', `${left}px`)
 
         // 设置 z-index
-        $container.css('z-index', editor.zIndex.get('tooltip'))
+        $container.css('z-index', 10001)
 
         // 添加到 DOM
         if (this._isInsertTextContainer) {

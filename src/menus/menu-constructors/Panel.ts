@@ -79,7 +79,7 @@ class Panel {
             .css('width', width + 'px')
             .css('margin-top', `${top}px`)
             .css('margin-left', `${left}px`)
-            .css('z-index', menu.editor.zIndex.get('panel'))
+            .css('z-index', 10002)
 
         // 添加关闭按钮
         const $closeBtn = $('<i class="w-e-icon-close w-e-panel-close"></i>')

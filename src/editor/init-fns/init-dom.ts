@@ -91,9 +91,9 @@ export default function (editor: Editor): void {
     $textContainerElem.append($placeholder)
 
     // 设置通用的 class
-    $toolbarElem.addClass('w-e-toolbar').css('z-index', editor.zIndex.get('toolbar'))
+    $toolbarElem.addClass('w-e-toolbar').css('z-index', 10001)
     $textContainerElem.addClass('w-e-text-container')
-    $textContainerElem.css('z-index', editor.zIndex.get())
+    $textContainerElem.css('z-index', 10000)
     $textElem.addClass('w-e-text')
 
     // 添加 ID

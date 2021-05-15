@@ -7,7 +7,6 @@ import menusConfig, { EmotionsType } from './menus'
 import eventsConfig from './events'
 import styleConfig from './style'
 import pasteConfig from './paste'
-import cmdConfig from './cmd'
 import imageConfig, { UploadImageHooksType } from './image'
 import textConfig from './text'
 
@@ -19,8 +18,6 @@ export type DicType = {
 // 定义配置项的类型规范
 export type ConfigType = {
     height: number
-    languageType: string[]
-    languageTab: string
     menus: string[]
     excludeMenus: string[]
     emotions: EmotionsType[]
@@ -57,7 +54,6 @@ export type ConfigType = {
     onCatalogChange: Function | null
     linkCheck: Function
     linkImgCheck: Function
-    historyMaxSize: number
     focus: boolean
 }
 
@@ -67,7 +63,6 @@ const defaultConfig = Object.assign(
     menusConfig,
     eventsConfig,
     styleConfig,
-    cmdConfig,
     pasteConfig,
     imageConfig,
     textConfig,

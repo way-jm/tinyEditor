@@ -13,7 +13,6 @@ import Menus from '../menus/index'
 import initDom, { selectorValidator } from './init-fns/init-dom'
 import initSelection from './init-fns/init-selection'
 import bindEvent from './init-fns/bind-event'
-import ZIndex from './z-index'
 import Change from './change/index'
 
 // 创建菜单的 class
@@ -49,7 +48,6 @@ class Editor {
     public cmd: CommandAPI
     public txt: Text
     public menus: Menus
-    public zIndex: ZIndex
     public change: Change
 
     // 实例销毁前需要执行的钩子集合
@@ -83,7 +81,6 @@ class Editor {
         this.cmd = new CommandAPI(this)
         this.txt = new Text(this)
         this.menus = new Menus(this)
-        this.zIndex = new ZIndex()
         this.change = new Change(this)
     }
 
@@ -99,12 +96,7 @@ class Editor {
      * 创建编辑器实例
      */
     public create(): void {
-        // 初始化 ZIndex
-        this.zIndex.init(this)
-
         this.config.onchangeTimeout = 30
-
-        // 国际化 因为要在创建菜单前使用 所以要最先 初始化
 
         // 初始化 DOM
         initDom(this)
