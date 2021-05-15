@@ -178,13 +178,6 @@ class Tooltip {
         this.$container.remove()
         this._show = false
     }
-
-    /**
-     * 是否显示
-     */
-    public get isShow(): boolean {
-        return this._show
-    }
 }
 
 export default Tooltip

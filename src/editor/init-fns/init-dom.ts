@@ -21,7 +21,6 @@ export default function (editor: Editor): void {
 
     const config = editor.config
     const height = config.height
-    const i18next = editor.i18next
 
     const $toolbarElem: DomElement = $('<div></div>')
     const $textContainerElem: DomElement = $('<div></div>')
@@ -65,7 +64,7 @@ export default function (editor: Editor): void {
     if (placeholder !== CONFIG.placeholder) {
         $placeholder = $(`<div>${placeholder}</div>`)
     } else {
-        $placeholder = $(`<div>${i18next.t(placeholder)}</div>`)
+        $placeholder = $(`<div>请输入内容</div>`)
     }
     $placeholder.addClass('placeholder')
 

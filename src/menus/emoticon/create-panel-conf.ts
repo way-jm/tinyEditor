@@ -41,7 +41,7 @@ export default function (editor: Editor): PanelConf {
 
     const tabsConf: PanelTabConf[] = emotions.map((ele: EmotionsType) => {
         return {
-            title: editor.i18next.t(`menus.panelMenus.emoticon.${ele.title}`),
+            title: `表情`,
 
             // 判断type类型如果是image则以img的形式插入否则以内容
             tpl: `<div>${GenerateExpressionStructure(ele)}</div>`,

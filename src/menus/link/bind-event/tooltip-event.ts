@@ -20,7 +20,7 @@ function createShowHideFn(editor: Editor) {
     function showLinkTooltip($link: DomElement) {
         const conf: TooltipConfType = [
             {
-                $elem: $(`<span>${editor.i18next.t('menus.panelMenus.link.查看链接')}</span>`),
+                $elem: $(`<span>'查看链接'</span>`),
                 onClick: (editor: Editor, $link: DomElement) => {
                     const link = $link.attr('href')
                     window.open(link, '_target')
@@ -30,7 +30,7 @@ function createShowHideFn(editor: Editor) {
                 },
             },
             {
-                $elem: $(`<span>${editor.i18next.t('menus.panelMenus.link.取消链接')}</span>`),
+                $elem: $(`<span>取消链接</span>`),
                 onClick: (editor: Editor, $link: DomElement) => {
                     // 选中链接元素
                     editor.selection.createRangeByElem($link)

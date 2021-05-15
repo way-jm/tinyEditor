@@ -13,7 +13,7 @@ import Editor from '../../../editor/index'
 export function createShowHideFn(editor: Editor) {
     let tooltip: Tooltip | null
     const t = (text: string, prefix: string = ''): string => {
-        return editor.i18next.t(prefix + text)
+        return ''
     }
 
     /**

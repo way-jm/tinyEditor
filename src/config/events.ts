@@ -5,12 +5,6 @@
 
 import { EMPTY_FN } from '../utils/const'
 
-export type TCatalog = {
-    tag: string
-    id: string
-    text: string
-}
-
 /**
  * 提示信息
  * @param alertInfo alert info

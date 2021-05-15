@@ -30,9 +30,8 @@ class UploadImg {
         const editor = this.editor
         const config = editor.config
 
-        const i18nPrefix = 'validate.'
-        const t = (text: string, prefix: string = i18nPrefix): string => {
-            return editor.i18next.t(prefix + text)
+        const t = (text: string, prefix: string = ''): string => {
+            return ''
         }
 
         // 设置图片alt
@@ -43,8 +42,6 @@ class UploadImg {
             'insertHTML',
             `<img src="${src}" ${altText}${hrefText}style="max-width:100%;" contenteditable="false"/>`
         )
-        // 执行回调函数
-        config.linkImgCallback(src, alt, href)
 
         // 加载图片
         let img: any = document.createElement('img')
@@ -75,11 +72,8 @@ class UploadImg {
         const editor = this.editor
         const config = editor.config
 
-        // ------------------------------ i18next ------------------------------
-
-        const i18nPrefix = 'validate.'
         const t = (text: string): string => {
-            return editor.i18next.t(i18nPrefix + text)
+            return ''
         }
 
         // ------------------------------ 获取配置信息 ------------------------------

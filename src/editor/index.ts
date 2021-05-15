@@ -13,21 +13,13 @@ import Menus from '../menus/index'
 import initDom, { selectorValidator } from './init-fns/init-dom'
 import initSelection from './init-fns/init-selection'
 import bindEvent from './init-fns/bind-event'
-import i18nextInit from './init-fns/i18next-init'
-import initFullScreen, { setUnFullScreen, setFullScreen } from './init-fns/set-full-screen'
-import scrollToHead from './init-fns/scroll-to-head'
 import ZIndex from './z-index'
 import Change from './change/index'
 import History from './history/index'
-import disableInit from './disable'
-
-import initPlugins, { RegisterOptions, pluginsListType, registerPlugin } from '../plugins'
 
 // 创建菜单的 class
 import { MenuListType } from '../menus/menu-list'
 import BtnMenu from '../menus/menu-constructors/BtnMenu'
-import DropList from '../menus/menu-constructors/DropList'
-import DropListMenu from '../menus/menu-constructors/DropListMenu'
 import Panel from '../menus/menu-constructors/Panel'
 import PanelMenu from '../menus/menu-constructors/PanelMenu'
 import Tooltip from '../menus/menu-constructors/Tooltip'
@@ -38,14 +30,10 @@ class Editor {
     // 暴露 $
     static $ = $
     static BtnMenu = BtnMenu
-    static DropList = DropList
-    static DropListMenu = DropListMenu
     static Panel = Panel
     static PanelMenu = PanelMenu
     static Tooltip = Tooltip
     static globalCustomMenuConstructorList: MenuListType = {}
-    static globalPluginsFunctionList: pluginsListType = {}
-    public pluginsFunctionList: pluginsListType = {}
 
     public id: string
     public toolbarSelector: DomElementSelector
@@ -63,22 +51,12 @@ class Editor {
     public cmd: CommandAPI
     public txt: Text
     public menus: Menus
-    public i18next: any
-    public highlight: any
     public zIndex: ZIndex
     public change: Change
     public history: History
-    public isEnable: Boolean
 
     // 实例销毁前需要执行的钩子集合
     private beforeDestroyHooks: Function[] = []
-
-    /** 禁用api */
-    public disable: Function
-
-    /** 启用api */
-    public enable: Function
-
     /**
      * 构造函数
      * @param toolbarSelector 工具栏 DOM selector
@@ -112,11 +90,6 @@ class Editor {
         this.zIndex = new ZIndex()
         this.change = new Change(this)
         this.history = new History(this)
-
-        const { disable, enable } = disableInit(this)
-        this.disable = disable
-        this.enable = enable
-        this.isEnable = true
     }
 
     /**
@@ -143,7 +116,6 @@ class Editor {
         }
 
         // 国际化 因为要在创建菜单前使用 所以要最先 初始化
-        i18nextInit(this)
 
         // 初始化 DOM
         initDom(this)
@@ -153,9 +125,6 @@ class Editor {
 
         // 初始化菜单
         this.menus.init()
-
-        // 初始化全屏功能
-        initFullScreen(this)
 
         // 初始化选区，将光标定位到内容尾部
         this.initSelection(true)
@@ -167,9 +136,6 @@ class Editor {
         this.change.observe()
 
         this.history.observe()
-
-        // 初始化插件
-        initPlugins(this)
     }
 
     /**
@@ -190,56 +156,6 @@ class Editor {
         // 销毁 DOM 节点
         this.$toolbarElem.remove()
         this.$textContainerElem.remove()
-    }
-
-    /**
-     * 将编辑器设置为全屏
-     */
-    public fullScreen(): void {
-        setFullScreen(this)
-    }
-
-    /**
-     * 将编辑器退出全屏
-     */
-    public unFullScreen(): void {
-        setUnFullScreen(this)
-    }
-
-    /**
-     * 滚动到指定标题锚点
-     * @param id 标题锚点id
-     */
-    public scrollToHead(id: string): void {
-        scrollToHead(this, id)
-    }
-
-    /**
-     * 自定义添加菜单
-     * @param key 菜单 key
-     * @param Menu 菜单构造函数
-     */
-    static registerMenu(key: string, Menu: any) {
-        if (!Menu || typeof Menu !== 'function') return
-        Editor.globalCustomMenuConstructorList[key] = Menu
-    }
-
-    /**
-     * 自定义添加插件
-     * @param { string } name 插件的名称
-     * @param { RegisterOptions } options 插件的选项
-     */
-    public registerPlugin(name: string, options: RegisterOptions) {
-        registerPlugin(name, options, this.pluginsFunctionList)
-    }
-
-    /**
-     * 自定义添加插件
-     * @param { string } name 插件的名称
-     * @param { RegisterOptions } options 插件的选项
-     */
-    static registerPlugin(name: string, options: RegisterOptions) {
-        registerPlugin(name, options, Editor.globalPluginsFunctionList)
     }
 }
 
